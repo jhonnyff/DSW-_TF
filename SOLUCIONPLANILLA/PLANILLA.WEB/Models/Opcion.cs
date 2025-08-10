@@ -1,30 +1,30 @@
 ﻿namespace PLANILLA.WEB.Models
 {
-    public class EstadosCivil1
+    public class EstadosCivil
     {    
         public int IdEstadoCivil { get; set; }
         public string Nombre { get; set; }
     }
 
-    public class Cargo1
+    public class Cargo
     {
         public int? IdCargo { get; set; }
         public string Nombre { get; set; }
     }
 
-    public class TipoDocumento1
+    public class TipoDocumento
     {
         public int IdTipoDocumento { get; set; }
         public string Nombre { get; set; }
     }
 
-    public class Genero1
+    public class Genero
     {     
         public int IdGenero { get; set; }
         public string Nombre { get; set; }
     }
 
-    public class SistemaPension1
+    public class SistemaPension
     {
         public int IdSistemaPension { get; set; }
         public string Nombre { get; set; }
@@ -33,7 +33,7 @@
         public decimal? Prima { get; set; }
     }
 
-    public class SituacionTrabajador1
+    public class SituacionTrabajador
     {
         public int IdSituacion { get; set; }
         public string Nombre { get; set; }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
-using PLANILLA.ENTIDADES;
 using PLANILLA.UTILITARIOS;
 using PLANILLA.UTILITARIOS.Request;
 using PLANILLA.WEB.Data.Interfase;
@@ -16,13 +15,13 @@ namespace PLANILLA.WEB.Controllers
     public class TrabajadorController : Controller
     {
         public HttpClient _httpClient;
-        Trabajadores objTrabajador = new Trabajadores();
-        List<Cargos> ArrCargos = new List<Cargos>();
+        Trabajador objTrabajador = new Trabajador();
+        List<Cargo> ArrCargos = new List<Cargo>();
         List<SituacionTrabajador> ArrSituacion = new List<SituacionTrabajador>();
-        List<TipoDocumentos> ArrTpoDocumento = new List<TipoDocumentos>();
-        List<Generos> ArrGenero = new List<Generos>();
-        List<EstadosCiviles> ArrEstadocivil = new List<EstadosCiviles>();
-        List<SistemaPensiones> ArrSistemaPensiones = new List<SistemaPensiones>();
+        List<TipoDocumento> ArrTpoDocumento = new List<TipoDocumento>();
+        List<Genero> ArrGenero = new List<Genero>();
+        List<EstadosCivil> ArrEstadocivil = new List<EstadosCivil>();
+        List<SistemaPension> ArrSistemaPensiones = new List<SistemaPension>();
 
         public TrabajadorController()
         { 
@@ -45,12 +44,12 @@ namespace PLANILLA.WEB.Controllers
                     {
                         case 200:
                             var objarr = JsonConvert.DeserializeObject<dynamic>(System.Convert.ToString(obj["data"]));
-                            ArrCargos =             JsonConvert.DeserializeObject<List<Cargos>>             (System.Convert.ToString(objarr["cargos"]));
-                            ArrSituacion =          JsonConvert.DeserializeObject<List<SituacionTrabajador>>(System.Convert.ToString(objarr["situaciones"]));
-                            ArrTpoDocumento =       JsonConvert.DeserializeObject<List<TipoDocumentos>>     (System.Convert.ToString(objarr["tipoDocumentos"]));
-                            ArrGenero =             JsonConvert.DeserializeObject<List<Generos>>            (System.Convert.ToString(objarr["generos"]));
-                            ArrEstadocivil =        JsonConvert.DeserializeObject<List<EstadosCiviles>>     (System.Convert.ToString(objarr["estadosCiviles"]));
-                            ArrSistemaPensiones =   JsonConvert.DeserializeObject<List<SistemaPensiones>>   (System.Convert.ToString(objarr["sistemaPensiones"]));
+                            ArrCargos =             JsonConvert.DeserializeObject<List<Cargo>>             (Convert.ToString(objarr["cargos"]));
+                            ArrSituacion =          JsonConvert.DeserializeObject<List<SituacionTrabajador>>(Convert.ToString(objarr["situaciones"]));
+                            ArrTpoDocumento =       JsonConvert.DeserializeObject<List<TipoDocumento>>     (Convert.ToString(objarr["tipoDocumentos"]));
+                            ArrGenero =             JsonConvert.DeserializeObject<List<Genero>>            (Convert.ToString(objarr["generos"]));
+                            ArrEstadocivil =        JsonConvert.DeserializeObject<List<EstadosCivil>>     (Convert.ToString(objarr["estadosCiviles"]));
+                            ArrSistemaPensiones =   JsonConvert.DeserializeObject<List<SistemaPension>>   (Convert.ToString(objarr["sistemaPensiones"]));
 
                             break;
                         case 500: throw new Exception(System.Convert.ToString(obj["message"]));
@@ -68,7 +67,7 @@ namespace PLANILLA.WEB.Controllers
         {
             HttpResponseMessage response = new HttpResponseMessage();
             BuquedaTrabajador objBusqueda = new BuquedaTrabajador();
-            List<Trabajadores> Lista = new List<Trabajadores>();
+            List<Trabajador> Lista = new List<Trabajador>();
             _httpClient = new HttpClient();
             try
             {
@@ -100,7 +99,7 @@ namespace PLANILLA.WEB.Controllers
             ViewBag.cargo = new SelectList(ArrCargos, "IdCargo", "Nombre");
             ViewBag.sistPension = new SelectList(ArrSistemaPensiones, "IdSistemaPension", "Nombre");
 
-            return View("RegistroTrabajador",new Trabajadores());
+            return View("RegistroTrabajador",new Trabajador());
         }
 
         public async Task<IActionResult> EditarRegistro(string busqueda)
@@ -127,10 +126,10 @@ namespace PLANILLA.WEB.Controllers
         }
 
 
-        public async Task<List<Trabajadores>> GetTrabajadores(string busqueda)
+        public async Task<List<Trabajador>> GetTrabajadores(string busqueda)
         {
             HttpResponseMessage response = new HttpResponseMessage();            
-            List<Trabajadores> Lista = new List<Trabajadores>();
+            List<Trabajador> Lista = new List<Trabajador>();
 
             try
             {
@@ -143,7 +142,7 @@ namespace PLANILLA.WEB.Controllers
                     switch (JsonConvert.DeserializeObject<int>(System.Convert.ToString(obj["status"])))
                     {
                         case 200:
-                            Lista = JsonConvert.DeserializeObject<List<Trabajadores>>(System.Convert.ToString(obj["data"]));
+                            Lista = JsonConvert.DeserializeObject<List<Trabajador>>(System.Convert.ToString(obj["data"]));
                             break;
 
                         case 500: throw new Exception(System.Convert.ToString(obj["message"]));
@@ -160,7 +159,7 @@ namespace PLANILLA.WEB.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> RegistroEmpleadoAsync(Trabajador newTrabajador)
+        public async Task<IActionResult> RegistroTrabajador(Trabajador newTrabajador)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
