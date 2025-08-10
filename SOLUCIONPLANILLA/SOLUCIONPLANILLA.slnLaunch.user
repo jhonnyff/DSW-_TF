@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "PLANILLA.API\\PLANILLA.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "PLANILLA.WEB\\PLANILLA.WEB.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3CB3C344-E83A-4430-8218-C8043ED5D93A}|PLANILLA.WEB\\PLANILLA.WEB.csproj|c:\\proyectos\\desarrollo_servicios_web\\trabajo\\modelobase\\solucionplanilla\\planilla.web\\views\\trabajador\\empleado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3CB3C344-E83A-4430-8218-C8043ED5D93A}|PLANILLA.WEB\\PLANILLA.WEB.csproj|solutionrelative:planilla.web\\views\\trabajador\\empleado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CB3C344-E83A-4430-8218-C8043ED5D93A}|PLANILLA.WEB\\PLANILLA.WEB.csproj|c:\\proyectos\\desarrollo_servicios_web\\trabajo\\modelobase\\solucionplanilla\\planilla.web\\controllers\\trabajadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3CB3C344-E83A-4430-8218-C8043ED5D93A}|PLANILLA.WEB\\PLANILLA.WEB.csproj|solutionrelative:planilla.web\\controllers\\trabajadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CB3C344-E83A-4430-8218-C8043ED5D93A}|PLANILLA.WEB\\PLANILLA.WEB.csproj|c:\\proyectos\\desarrollo_servicios_web\\trabajo\\modelobase\\solucionplanilla\\planilla.web\\views\\trabajador\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3CB3C344-E83A-4430-8218-C8043ED5D93A}|PLANILLA.WEB\\PLANILLA.WEB.csproj|solutionrelative:planilla.web\\views\\trabajador\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{182F7CE8-C77C-44ED-81CA-FB4F2B2E40B5}|PLANILLA.ESCRITORIO\\PLANILLA.ESCRITORIO.csproj|c:\\proyectos\\desarrollo_servicios_web\\trabajo\\modelobase\\solucionplanilla\\planilla.escritorio\\formularios\\trabajador\\frmtrabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{182F7CE8-C77C-44ED-81CA-FB4F2B2E40B5}|PLANILLA.ESCRITORIO\\PLANILLA.ESCRITORIO.csproj|solutionrelative:planilla.escritorio\\formularios\\trabajador\\frmtrabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{182F7CE8-C77C-44ED-81CA-FB4F2B2E40B5}|PLANILLA.ESCRITORIO\\PLANILLA.ESCRITORIO.csproj|c:\\proyectos\\desarrollo_servicios_web\\trabajo\\modelobase\\solucionplanilla\\planilla.escritorio\\formularios\\trabajador\\frmtrabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{182F7CE8-C77C-44ED-81CA-FB4F2B2E40B5}|PLANILLA.ESCRITORIO\\PLANILLA.ESCRITORIO.csproj|solutionrelative:planilla.escritorio\\formularios\\trabajador\\frmtrabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Empleado.cshtml",
+              "DocumentMoniker": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.WEB\\Views\\Trabajador\\Empleado.cshtml",
+              "RelativeDocumentMoniker": "PLANILLA.WEB\\Views\\Trabajador\\Empleado.cshtml",
+              "ToolTip": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.WEB\\Views\\Trabajador\\Empleado.cshtml",
+              "RelativeToolTip": "PLANILLA.WEB\\Views\\Trabajador\\Empleado.cshtml",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAAAA8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-10T02:08:09.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.WEB\\Views\\Trabajador\\Index.cshtml",
+              "RelativeDocumentMoniker": "PLANILLA.WEB\\Views\\Trabajador\\Index.cshtml",
+              "ToolTip": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.WEB\\Views\\Trabajador\\Index.cshtml",
+              "RelativeToolTip": "PLANILLA.WEB\\Views\\Trabajador\\Index.cshtml",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAADsAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-09T20:32:51.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TrabajadorController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.WEB\\Controllers\\TrabajadorController.cs",
+              "RelativeDocumentMoniker": "PLANILLA.WEB\\Controllers\\TrabajadorController.cs",
+              "ToolTip": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.WEB\\Controllers\\TrabajadorController.cs",
+              "RelativeToolTip": "PLANILLA.WEB\\Controllers\\TrabajadorController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAiwG0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T21:51:53.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmTrabajador.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.ESCRITORIO\\Formularios\\Trabajador\\FrmTrabajador.cs",
+              "RelativeDocumentMoniker": "PLANILLA.ESCRITORIO\\Formularios\\Trabajador\\FrmTrabajador.cs",
+              "ToolTip": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.ESCRITORIO\\Formularios\\Trabajador\\FrmTrabajador.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PLANILLA.ESCRITORIO\\Formularios\\Trabajador\\FrmTrabajador.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-09T20:23:09.507Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmTrabajador.cs",
+              "DocumentMoniker": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.ESCRITORIO\\Formularios\\Trabajador\\FrmTrabajador.cs",
+              "RelativeDocumentMoniker": "PLANILLA.ESCRITORIO\\Formularios\\Trabajador\\FrmTrabajador.cs",
+              "ToolTip": "C:\\Proyectos\\DESARROLLO_SERVICIOS_WEB\\Trabajo\\MOdeloBAse\\SOLUCIONPLANILLA\\PLANILLA.ESCRITORIO\\Formularios\\Trabajador\\FrmTrabajador.cs",
+              "RelativeToolTip": "PLANILLA.ESCRITORIO\\Formularios\\Trabajador\\FrmTrabajador.cs",
+              "ViewState": "AgIAAEsBAAAAAAAAAAAAwDUBAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T22:46:28.343Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

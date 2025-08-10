@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Consulta API";
+}
+
+<h2>Consulta API</h2>
+
+<form method="post" class="mb-4">
+    <div class="form-group">
+        <label for="year">Año:</label>
+        <input type="number" class="form-control" id="year" asp-for="Year" placeholder="Ingrese el año" />
+    </div>
+    <div class="form-group">
+        <label for="month">Mes:</label>
+        <input type="number" class="form-control" id="month" asp-for="Month" placeholder="Ingrese el mes" />
+    </div>
+    <div class="form-group">
+        <label for="documentNumber">Número de documento:</label>
+        <input type="text" class="form-control" id="documentNumber" asp-for="DocumentNumber" placeholder="Ingrese el número de documento" />
+    </div>
+    <button type="submit" class="btn btn-primary">Consultar</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.HtmlContent))
+{
+    <h3>Resultados:</h3>
+    <div class="card p-4 mb-4">
+        @Html.Raw(Model.HtmlContent)
+    </div>
+
+    @* @if (Model.HtmlContent.Contains("Boleta de Pago"))
+    {
+        <form method="post" asp-page-handler="DownloadPdf">
+            <input type="hidden" name="HtmlContent" value="@Html.Raw(Model.HtmlContent)" />
+            <button type="submit" class="btn btn-success">Descargar PDF</button>
+        </form>
+    } *@
+}
