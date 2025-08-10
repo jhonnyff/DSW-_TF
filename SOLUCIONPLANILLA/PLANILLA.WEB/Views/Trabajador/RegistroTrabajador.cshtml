@@ -1,4 +1,4 @@
-﻿@model PLANILLA.WEB.Models.Trabajador
+﻿@model PLANILLA.ENTIDADES.Trabajadores
 
 @{
     ViewData["Title"] = "RegistroEmpleado";
@@ -180,6 +180,10 @@
                 <label asp-for="Foto" class="control-label"></label>
                 <input asp-for="Foto" class="form-control" />
                 <span asp-validation-for="Foto" class="text-danger"></span>
+
+                <div class="footer">
+                    <input type="button" />
+                </div>                
             </div>
         </div>
 

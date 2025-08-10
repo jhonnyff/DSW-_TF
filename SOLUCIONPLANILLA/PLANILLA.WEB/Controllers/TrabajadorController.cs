@@ -29,6 +29,7 @@ namespace PLANILLA.WEB.Controllers
             _httpClient = new HttpClient();
             
         }
+        
         async Task CargarParametros()
         {
             try
@@ -61,13 +62,13 @@ namespace PLANILLA.WEB.Controllers
             {
                 throw; //mensaje_error(ex);
             }
-
         }
+
         public async Task<IActionResult> Index(string busqueda, int page = 1)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             BuquedaTrabajador objBusqueda = new BuquedaTrabajador();
-            List<Trabajador> Lista = new List<Trabajador>();
+            List<Trabajadores> Lista = new List<Trabajadores>();
             _httpClient = new HttpClient();
             try
             {
@@ -88,7 +89,7 @@ namespace PLANILLA.WEB.Controllers
             }
         }
 
-        public async Task<IActionResult> Empleado()
+        public async Task<IActionResult> NuevoRegistro()
         {
             await CargarParametros();
             ViewBag.h1 = "Registro de Trabajador";
@@ -99,7 +100,7 @@ namespace PLANILLA.WEB.Controllers
             ViewBag.cargo = new SelectList(ArrCargos, "IdCargo", "Nombre");
             ViewBag.sistPension = new SelectList(ArrSistemaPensiones, "IdSistemaPension", "Nombre");
 
-            return View(new Trabajador());
+            return View("RegistroTrabajador",new Trabajadores());
         }
 
         public async Task<IActionResult> EditarRegistro(string busqueda)
@@ -117,7 +118,7 @@ namespace PLANILLA.WEB.Controllers
 
                 var Obj = await GetTrabajadores(busqueda);
                 
-                return View("Empleado", Obj.FirstOrDefault());
+                return View("RegistroTrabajador", Obj.FirstOrDefault());
             }
             catch (Exception ex)
             {
@@ -126,10 +127,10 @@ namespace PLANILLA.WEB.Controllers
         }
 
 
-        public async Task<List<Trabajador>> GetTrabajadores(string busqueda)
+        public async Task<List<Trabajadores>> GetTrabajadores(string busqueda)
         {
             HttpResponseMessage response = new HttpResponseMessage();            
-            List<Trabajador> Lista = new List<Trabajador>();
+            List<Trabajadores> Lista = new List<Trabajadores>();
 
             try
             {
@@ -142,9 +143,9 @@ namespace PLANILLA.WEB.Controllers
                     switch (JsonConvert.DeserializeObject<int>(System.Convert.ToString(obj["status"])))
                     {
                         case 200:
-                            Lista = JsonConvert.DeserializeObject<List<Trabajador>>(System.Convert.ToString(obj["data"]));
-
+                            Lista = JsonConvert.DeserializeObject<List<Trabajadores>>(System.Convert.ToString(obj["data"]));
                             break;
+
                         case 500: throw new Exception(System.Convert.ToString(obj["message"]));
                     }
                 }
@@ -166,13 +167,10 @@ namespace PLANILLA.WEB.Controllers
             try
             {
                 if (newTrabajador.IdTrabajador == 0)
-                {
                     response = await _httpClient.PostAsJsonAsync($"{GlobalConstantes.ApiTrabajador}Insert", newTrabajador);
-                }
+                
                 else
-                {
                     response = await _httpClient.PostAsJsonAsync($"{GlobalConstantes.ApiTrabajador}Update", newTrabajador);
-                }
 
                 if (!response.IsSuccessStatusCode) throw new Exception("Error: " + response.RequestMessage.ToString());
 
