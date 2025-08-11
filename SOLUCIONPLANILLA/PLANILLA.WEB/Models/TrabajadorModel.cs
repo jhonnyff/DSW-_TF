@@ -21,11 +21,5 @@ namespace PLANILLA.WEB.Models
         public int IdSituacion { get; set; }
         public int IdSistemaPension { get; set; }
         public byte[] Foto { get; set; } // IMAGE, nullable
-        //public List<TipoDocumentos> TipoDocumentos { get; set; }
-        //public List<Generos> Generos { get; set; }
-        //public List<EstadosCiviles> EstadosCivil { get; set; }
-        //public List<SituacionTrabajador> SituacionTrabajador { get; set; }
-        //public List<Cargos> Cargos { get; set; }
-        //public List<SistemaPensiones> SistemaPension { get; set; }
     }
 }
