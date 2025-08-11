@@ -3,19 +3,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using PLANILLA.UTILITARIOS;
 using PLANILLA.UTILITARIOS.Request;
-using PLANILLA.WEB.Data.Interfase;
 using PLANILLA.WEB.Models;
-using System;
-using System.Net.Http;
-using System.Text;
-using static PLANILLA.UTILITARIOS.GlobalEnum;
 
 namespace PLANILLA.WEB.Controllers
 {
     public class TrabajadorController : Controller
     {
+        private readonly IConfiguration _config;
+        private readonly string baseAddress;
+
         public HttpClient _httpClient;
-        Trabajador objTrabajador = new Trabajador();
         List<Cargo> ArrCargos = new List<Cargo>();
         List<SituacionTrabajador> ArrSituacion = new List<SituacionTrabajador>();
         List<TipoDocumento> ArrTpoDocumento = new List<TipoDocumento>();
@@ -23,18 +20,19 @@ namespace PLANILLA.WEB.Controllers
         List<EstadosCivil> ArrEstadocivil = new List<EstadosCivil>();
         List<SistemaPension> ArrSistemaPensiones = new List<SistemaPension>();
 
-        public TrabajadorController()
-        { 
+        public TrabajadorController(IConfiguration config)
+        {
             _httpClient = new HttpClient();
-            
+            _config = config;
+            baseAddress = _config["ApiService:URL"].ToString();
         }
-        
+
         async Task CargarParametros()
         {
             try
             {
                 HttpResponseMessage response = new HttpResponseMessage();
-                response = await _httpClient.GetAsync($"{GlobalConstantes.ApiParametro}ParametrosFormularioTrabajador");
+                response = await _httpClient.GetAsync($"{baseAddress}{GlobalConstantes.ApiParametro}ParametrosFormularioTrabajador");
                 if (!response.IsSuccessStatusCode) throw new Exception("Error: " + response.RequestMessage.ToString());
                 using (HttpContent content = response.Content)
                 {
@@ -44,12 +42,12 @@ namespace PLANILLA.WEB.Controllers
                     {
                         case 200:
                             var objarr = JsonConvert.DeserializeObject<dynamic>(System.Convert.ToString(obj["data"]));
-                            ArrCargos =             JsonConvert.DeserializeObject<List<Cargo>>             (Convert.ToString(objarr["cargos"]));
-                            ArrSituacion =          JsonConvert.DeserializeObject<List<SituacionTrabajador>>(Convert.ToString(objarr["situaciones"]));
-                            ArrTpoDocumento =       JsonConvert.DeserializeObject<List<TipoDocumento>>     (Convert.ToString(objarr["tipoDocumentos"]));
-                            ArrGenero =             JsonConvert.DeserializeObject<List<Genero>>            (Convert.ToString(objarr["generos"]));
-                            ArrEstadocivil =        JsonConvert.DeserializeObject<List<EstadosCivil>>     (Convert.ToString(objarr["estadosCiviles"]));
-                            ArrSistemaPensiones =   JsonConvert.DeserializeObject<List<SistemaPension>>   (Convert.ToString(objarr["sistemaPensiones"]));
+                            ArrCargos = JsonConvert.DeserializeObject<List<Cargo>>(Convert.ToString(objarr["cargos"]));
+                            ArrSituacion = JsonConvert.DeserializeObject<List<SituacionTrabajador>>(Convert.ToString(objarr["situaciones"]));
+                            ArrTpoDocumento = JsonConvert.DeserializeObject<List<TipoDocumento>>(Convert.ToString(objarr["tipoDocumentos"]));
+                            ArrGenero = JsonConvert.DeserializeObject<List<Genero>>(Convert.ToString(objarr["generos"]));
+                            ArrEstadocivil = JsonConvert.DeserializeObject<List<EstadosCivil>>(Convert.ToString(objarr["estadosCiviles"]));
+                            ArrSistemaPensiones = JsonConvert.DeserializeObject<List<SistemaPension>>(Convert.ToString(objarr["sistemaPensiones"]));
 
                             break;
                         case 500: throw new Exception(System.Convert.ToString(obj["message"]));
@@ -80,7 +78,7 @@ namespace PLANILLA.WEB.Controllers
                 int omitir = (page - 1) * regisroPorPagina;
                 ViewBag.totalPaginas = totalPaginas;
 
-                return View(Lista.Skip(omitir).Take(regisroPorPagina));                
+                return View(Lista.Skip(omitir).Take(regisroPorPagina));
             }
             catch (Exception ex)
             {
@@ -92,14 +90,14 @@ namespace PLANILLA.WEB.Controllers
         {
             await CargarParametros();
             ViewBag.h1 = "Registro de Trabajador";
-            ViewBag.tipoDocumento = new SelectList( ArrTpoDocumento, "IdTipoDocumento", "Nombre");
-            ViewBag.genero = new SelectList(ArrGenero, "IdGenero","Nombre");
+            ViewBag.tipoDocumento = new SelectList(ArrTpoDocumento, "IdTipoDocumento", "Nombre");
+            ViewBag.genero = new SelectList(ArrGenero, "IdGenero", "Nombre");
             ViewBag.estCivil = new SelectList(ArrEstadocivil, "IdEstadoCivil", "Nombre");
             ViewBag.situacion = new SelectList(ArrSituacion, "IdSituacion", "Nombre");
             ViewBag.cargo = new SelectList(ArrCargos, "IdCargo", "Nombre");
             ViewBag.sistPension = new SelectList(ArrSistemaPensiones, "IdSistemaPension", "Nombre");
 
-            return View("RegistroTrabajador",new Trabajador());
+            return View("RegistroTrabajador", new Trabajador());
         }
 
         public async Task<IActionResult> EditarRegistro(string busqueda)
@@ -116,7 +114,7 @@ namespace PLANILLA.WEB.Controllers
                 ViewBag.sistPension = new SelectList(ArrSistemaPensiones, "IdSistemaPension", "Nombre");
 
                 var Obj = await GetTrabajadores(busqueda);
-                
+
                 return View("RegistroTrabajador", Obj.FirstOrDefault());
             }
             catch (Exception ex)
@@ -128,12 +126,12 @@ namespace PLANILLA.WEB.Controllers
 
         public async Task<List<Trabajador>> GetTrabajadores(string busqueda)
         {
-            HttpResponseMessage response = new HttpResponseMessage();            
-            List<Trabajador> Lista = new List<Trabajador>();
+            HttpResponseMessage response = new HttpResponseMessage();
+            List<Trabajador> Lista = new List<Trabajador>();            
 
             try
             {
-                response = await _httpClient.PostAsJsonAsync($"{GlobalConstantes.ApiTrabajador}BusquedaTrabajadores", new BuquedaTrabajador { Busqueda = busqueda, estado = GlobalEnum._Estado.Todos });
+                response = await _httpClient.PostAsJsonAsync($"{baseAddress}{GlobalConstantes.ApiTrabajador}BusquedaTrabajadores", new BuquedaTrabajador { Busqueda = busqueda, estado = GlobalEnum._Estado.Todos });
                 if (!response.IsSuccessStatusCode) throw new Exception("Error: " + response.RequestMessage.ToString());
                 using (HttpContent content = response.Content)
                 {
@@ -166,10 +164,10 @@ namespace PLANILLA.WEB.Controllers
             try
             {
                 if (newTrabajador.IdTrabajador == 0)
-                    response = await _httpClient.PostAsJsonAsync($"{GlobalConstantes.ApiTrabajador}Insert", newTrabajador);
+                    response = await _httpClient.PostAsJsonAsync($"{baseAddress}{GlobalConstantes.ApiTrabajador}Insert", newTrabajador);
                 
                 else
-                    response = await _httpClient.PostAsJsonAsync($"{GlobalConstantes.ApiTrabajador}Update", newTrabajador);
+                    response = await _httpClient.PostAsJsonAsync($"{baseAddress}{GlobalConstantes.ApiTrabajador}Update", newTrabajador);
 
                 if (!response.IsSuccessStatusCode) throw new Exception("Error: " + response.RequestMessage.ToString());
 
